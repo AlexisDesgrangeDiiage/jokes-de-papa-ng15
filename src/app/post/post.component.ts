@@ -14,16 +14,16 @@ export class PostComponent implements OnInit {
   posts: Post[] = postsMock
   posts$!: Observable<Post[]>;
   post?: Post;
-  id?: number;
+  slug?: number;
   constructor(private route: ActivatedRoute, private _postService: PostService) {}
 
   ngOnInit(): void {
 
     this.route.queryParams.subscribe(params => {
-      this.id = params['id'];
+      this.slug = params['slug'];
     });
 
-    this.post = postsMock.find((post) => post.id === this.id);
+    this.post = postsMock.find((post) => post.id === this.slug);
     // this.post = this.posts$.pipe(
     //   map((posts : Post[] => {
     //     return posts.filter((post: Post) => post.id === this.id
