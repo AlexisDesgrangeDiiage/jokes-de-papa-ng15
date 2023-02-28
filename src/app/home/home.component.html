@@ -65,6 +65,7 @@
   <p>They are so BAD an so FUNNY!</p>
 
   <div class="card-container">
+    <ng-container *ngIf="posts$ | async as posts; else loading">
     <a
       *ngFor="let post of posts"
       [routerLink]="['/post', post.id]"
@@ -72,5 +73,7 @@
     >
       <span>{{ post.title }}</span>
     </a>
+  </ng-container>
+  <ng-template #loading>chargement des données...</ng-template>
   </div>
 </div>
